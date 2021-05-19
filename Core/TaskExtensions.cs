@@ -5,7 +5,7 @@ namespace FunctionalCsharp
 {
     public static class TaskExtensions
     {
-        public async static Task<TResult> Map<T, TResult>(
+        public async static Task<TResult> Select<T, TResult>(
             this Task<T> source,
             Func<T, TResult> selector)
         {
@@ -13,7 +13,7 @@ namespace FunctionalCsharp
             return selector(x);
         }
 
-        public async static Task<TResult> Bind<T, TResult>(
+        public async static Task<TResult> SelectMany<T, TResult>(
             this Task<T> source,
             Func<T, Task<TResult>> selector)
         {

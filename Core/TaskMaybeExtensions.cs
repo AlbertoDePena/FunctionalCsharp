@@ -14,15 +14,15 @@ namespace FunctionalCsharp
             return maybe.Match(nothing, something);
         }
 
-        public static async Task<Maybe<TResult>> Map<T, TResult>(
+        public static async Task<Maybe<TResult>> Select<T, TResult>(
             this Task<Maybe<T>> source,
             Func<T, TResult> selector)
         {
             var maybe = await source;
-            return maybe.Map(selector);
+            return maybe.Select(selector);
         }
 
-        public static async Task<Maybe<TResult>> Bind<T, TResult>(
+        public static async Task<Maybe<TResult>> SelectMany<T, TResult>(
             this Task<Maybe<T>> source,
             Func<T, Task<Maybe<TResult>>> selector)
         {

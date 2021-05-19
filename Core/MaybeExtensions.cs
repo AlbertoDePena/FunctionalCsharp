@@ -4,7 +4,7 @@ namespace FunctionalCsharp
 {
     public static class MaybeExtensions
     {
-        public static Maybe<TResult> Map<T, TResult>(
+        public static Maybe<TResult> Select<T, TResult>(
             this Maybe<T> source,
             Func<T, TResult> selector)
         {
@@ -13,7 +13,7 @@ namespace FunctionalCsharp
                 something: x => Maybe<TResult>.Something(selector(x)));
         }
 
-        public static Maybe<TResult> Bind<T, TResult>(
+        public static Maybe<TResult> SelectMany<T, TResult>(
             this Maybe<T> source,
             Func<T, Maybe<TResult>> selector)
         {

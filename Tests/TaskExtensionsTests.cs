@@ -16,7 +16,7 @@ namespace FunctionalCsharp.Tests
             Func<string, string> id = x => x;
             var task = Task.FromResult(value);
 
-            Assert.Equal(await task, await task.Map(id));
+            Assert.Equal(await task, await task.Select(id));
         }
 
         [Theory]
@@ -30,7 +30,7 @@ namespace FunctionalCsharp.Tests
             Func<int, bool> f = i => i % 2 == 0;
             var task = Task.FromResult(value);
 
-            Assert.Equal(await task.Map(g).Map(f), await task.Map(s => f(g(s))));
+            Assert.Equal(await task.Select(g).Select(f), await task.Select(s => f(g(s))));
         }
     }
 }

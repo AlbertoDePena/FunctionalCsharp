@@ -50,7 +50,7 @@ namespace FunctionalCsharp.Tests
             Func<string, string> id = x => x;
             var maybe = Maybe<string>.Nothing();
 
-            Assert.Equal(maybe, maybe.Map(id));
+            Assert.Equal(maybe, maybe.Select(id));
         }
 
         [Theory]
@@ -63,7 +63,7 @@ namespace FunctionalCsharp.Tests
             Func<string, string> id = x => x;
             var maybe = Maybe<string>.Something(value);
 
-            Assert.Equal(maybe, maybe.Map(id));
+            Assert.Equal(maybe, maybe.Select(id));
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace FunctionalCsharp.Tests
             Func<int, bool> f = i => i % 2 == 0;
             var maybe = Maybe<string>.Nothing();
 
-            Assert.Equal(maybe.Map(g).Map(f), maybe.Map(s => f(g(s))));
+            Assert.Equal(maybe.Select(g).Select(f), maybe.Select(s => f(g(s))));
         }
 
         [Theory]
@@ -87,7 +87,7 @@ namespace FunctionalCsharp.Tests
             Func<int, bool> f = i => i % 2 == 0;
             var maybe = Maybe<string>.Something(value);
 
-            Assert.Equal(maybe.Map(g).Map(f), maybe.Map(s => f(g(s))));
+            Assert.Equal(maybe.Select(g).Select(f), maybe.Select(s => f(g(s))));
         }
     }
 }
