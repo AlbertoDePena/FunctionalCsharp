@@ -8,26 +8,13 @@ namespace FunctionalCsharp.Tests
         [Fact]
         public void NothingIsNothing()
         {
-            var maybe = Maybe<int>.Nothing();
-
-            Assert.True(maybe.IsNothing);
+            Assert.True(Maybe<int>.Nothing().IsNothing);
         }
 
         [Fact]
         public void SomethingIsSomething()
         {
-            var maybe = Maybe<int>.Something(1);
-
-            Assert.True(maybe.IsSomething);
-        }
-
-        [Fact]
-        public void NothingEqualsNothing()
-        {
-            var m1 = Maybe<int>.Nothing();
-            var m2 = Maybe<int>.Nothing();
-
-            Assert.Equal(m1, m2);
+            Assert.True(Maybe<int>.Something(1).IsSomething);
         }
 
         [Fact]
@@ -44,6 +31,15 @@ namespace FunctionalCsharp.Tests
         {
             var m1 = Maybe<int>.Something(1);
             var m2 = Maybe<int>.Something(1);
+
+            Assert.Equal(m1, m2);
+        }
+
+        [Fact]
+        public void NothingEqualsNothing()
+        {
+            var m1 = Maybe<int>.Nothing();
+            var m2 = Maybe<int>.Nothing();
 
             Assert.Equal(m1, m2);
         }
