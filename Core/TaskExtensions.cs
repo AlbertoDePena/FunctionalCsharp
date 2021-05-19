@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace FunctionalCsharp
+namespace CSharp.Functional
 {
     public static class TaskExtensions
     {

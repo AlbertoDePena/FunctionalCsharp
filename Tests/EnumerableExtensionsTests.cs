@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace FunctionalCsharp.Tests
+namespace CSharp.Functional.Tests
 {
     public class EnumerableExtensionsTests
     {

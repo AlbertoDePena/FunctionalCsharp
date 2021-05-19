@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FunctionalCsharp
+namespace CSharp.Functional
 {
     public static class EnumerableExtensions
     {

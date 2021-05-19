@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace FunctionalCsharp.Tests
+namespace CSharp.Functional.Tests
 {
     public class TaskExtensionsTests
     {

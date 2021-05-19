@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace FunctionalCsharp.Tests
+namespace CSharp.Functional.Tests
 {
     public class MaybeTests
     {

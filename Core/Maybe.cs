@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FunctionalCsharp
+namespace CSharp.Functional
 {
     public sealed class Maybe<T>
     {
