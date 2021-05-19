@@ -18,7 +18,7 @@ namespace CSharp.Functional
             Func<T, Maybe<TResult>> selector)
         {
             return source.Match(
-                nothing: Maybe<TResult>.Nothing(), 
+                nothing: Maybe<TResult>.Nothing(),
                 something: selector);
         }
     }

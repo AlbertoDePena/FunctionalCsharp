@@ -40,5 +40,10 @@ namespace CSharp.Functional
                 nothing: Task.FromResult(Maybe<TResult>.Nothing()),
                 something: async x => Maybe<TResult>.Something(await selector(x)));
         }
+
+        public static Task<Maybe<T>> ToTask<T>(this Maybe<T> source)
+        {
+            return Task.FromResult(source);
+        }
     }
 }
