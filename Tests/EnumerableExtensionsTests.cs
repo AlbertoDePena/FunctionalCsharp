@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -14,7 +13,7 @@ namespace FunctionalCsharp.Tests
         [InlineData("blahblahblah")]
         public void SingletonReturnsOneItem(string value)
         {
-            var enumerable = EnumerableExtensions.Singleton(value);
+            var enumerable = Enumerable.Singleton(value);
 
             Assert.True(enumerable.Count() == 1);
         }
