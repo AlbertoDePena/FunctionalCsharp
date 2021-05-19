@@ -22,6 +22,33 @@ namespace FunctionalCsharp.Tests
         }
 
         [Fact]
+        public void NothingEqualsNothing()
+        {
+            var m1 = Maybe<int>.Nothing();
+            var m2 = Maybe<int>.Nothing();
+
+            Assert.Equal(m1, m2);
+        }
+
+        [Fact]
+        public void NothingNotEqualsSomething()
+        {
+            var m1 = Maybe<int>.Nothing();
+            var m2 = Maybe<int>.Something(1);
+
+            Assert.NotEqual(m1, m2);
+        }
+
+        [Fact]
+        public void SomethingEqualsSomething()
+        {
+            var m1 = Maybe<int>.Something(1);
+            var m2 = Maybe<int>.Something(1);
+
+            Assert.Equal(m1, m2);
+        }
+
+        [Fact]
         public void EmptyMaybeObeysFirstFunctorLaw()
         {
             Func<string, string> id = x => x;
@@ -34,8 +61,7 @@ namespace FunctionalCsharp.Tests
         [InlineData("")]
         [InlineData("foo")]
         [InlineData("bar")]
-        [InlineData("corge")]
-        [InlineData("antidisestablishmentarianism")]
+        [InlineData("blahblahblah")]
         public void PopulatedMaybeObeysFirstFunctorLaw(string value)
         {
             Func<string, string> id = x => x;
@@ -55,12 +81,11 @@ namespace FunctionalCsharp.Tests
         }
 
         [Theory]
-        [InlineData("", true)]
-        [InlineData("foo", false)]
-        [InlineData("bar", false)]
-        [InlineData("corge", false)]
-        [InlineData("antidisestablishmentarianism", true)]
-        public void PopulatedMaybeObeysSecondFunctorLaw(string value, bool expected)
+        [InlineData("")]
+        [InlineData("foo")]
+        [InlineData("bar")]
+        [InlineData("blahblahblah")]
+        public void PopulatedMaybeObeysSecondFunctorLaw(string value)
         {
             Func<string, int> g = s => s.Length;
             Func<int, bool> f = i => i % 2 == 0;
