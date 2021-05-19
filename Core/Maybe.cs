@@ -14,7 +14,10 @@ namespace FunctionalCsharp
 
         private Maybe(T item)
         {
-            this.item = item ?? throw new ArgumentNullException(nameof(item));
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+
+            this.item = item;
             hasItem = true;
         }
 
