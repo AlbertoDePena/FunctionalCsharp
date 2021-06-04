@@ -131,6 +131,20 @@ namespace CSharp.Functional.Tests
             Assert.True(nullRecord.ToMaybe().IsNothing);
             Assert.True(record.ToMaybe().IsSomething);
         }
+
+        [Fact]
+        public void SelectMany()
+        {
+            var x = Maybe<int>.Something(1);
+            var y = Maybe<int>.Something(1);
+
+            var z =
+                from a in x
+                from b in y
+                select a + b;
+
+            Assert.Equal(2, z.Match(0, x => x));
+        }
     }
 
     public class SomeRecord {}

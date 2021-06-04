@@ -13,6 +13,13 @@ namespace CSharp.Functional
                 something: x => Maybe<TResult>.Something(selector(x)));
         }
 
+        public static Maybe<T> Flatten<T>(this Maybe<Maybe<T>> source)
+        {
+            return source.Match(
+                nothing: Maybe<T>.Nothing(),
+                something: x => x);
+        }
+
         public static Maybe<TResult> SelectMany<T, TResult>(
             this Maybe<T> source,
             Func<T, Maybe<TResult>> selector)
@@ -20,6 +27,16 @@ namespace CSharp.Functional
             return source.Match(
                 nothing: Maybe<TResult>.Nothing(),
                 something: selector);
+        }
+
+        public static Maybe<TResult> SelectMany<T, U, TResult>(
+            this Maybe<T> source,
+            Func<T, Maybe<U>> k,
+            Func<T, U, TResult> s)
+        {
+            return source
+                .SelectMany(x => k(x)
+                    .SelectMany(y => Maybe<TResult>.Something(s(x, y))));
         }
 
         public static Maybe<T> ToMaybe<T>(this T source)
