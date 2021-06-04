@@ -95,9 +95,9 @@ namespace CSharp.Functional.Tests
         {
             string nullString = null;
 
-            Assert.True(nullString.ToMaybe(string.IsNullOrWhiteSpace).IsNothing);
-            Assert.True("".ToMaybe(string.IsNullOrWhiteSpace).IsNothing);
-            Assert.True("Functional".ToMaybe(string.IsNullOrWhiteSpace).IsSomething);
+            Assert.True(nullString.ToMaybe().IsNothing);
+            Assert.True("".ToMaybe().IsSomething);
+            Assert.True("Functional".ToMaybe().IsSomething);
 
             int? nullInt = null;
 
@@ -143,7 +143,18 @@ namespace CSharp.Functional.Tests
                 from b in y
                 select a + b;
 
-            Assert.Equal(2, z.Match(0, x => x));
+            Assert.Equal(2, z.Match(0, value => value));
+        }
+
+        [Fact]
+        public void Filter()
+        {
+            bool IsNotNullOrWhiteSpace(string value) => !string.IsNullOrWhiteSpace(value);
+
+            var stringValue = "".ToMaybe();
+            var result = stringValue.Filter(IsNotNullOrWhiteSpace);
+
+            Assert.True(result.IsNothing);
         }
     }
 
