@@ -13,7 +13,7 @@ namespace CSharp.Functional.Tests
         [InlineData("blahblahblah")]
         public void SingletonReturnsOneItem(string value)
         {
-            var enumerable = Enumerable.Singleton(value);
+            var enumerable = EnumerableExtensions.Singleton(value);
 
             Assert.True(enumerable.Count() == 1);
         }

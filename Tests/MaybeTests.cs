@@ -89,5 +89,49 @@ namespace CSharp.Functional.Tests
 
             Assert.Equal(maybe.Select(g).Select(f), maybe.Select(s => f(g(s))));
         }
+
+        [Fact]
+        public void ToMaybeForDifferentDataTypes()
+        {
+            string nullString = null;
+
+            Assert.True(nullString.ToMaybe(string.IsNullOrWhiteSpace).IsNothing);
+            Assert.True("".ToMaybe(string.IsNullOrWhiteSpace).IsNothing);
+            Assert.True("Functional".ToMaybe(string.IsNullOrWhiteSpace).IsSomething);
+
+            int? nullInt = null;
+
+            Assert.True(nullInt.ToMaybe().IsNothing);
+            Assert.True(new Nullable<int>(1).ToMaybe().IsSomething);
+
+            double? nullDouble = null;
+
+            Assert.True(nullDouble.ToMaybe().IsNothing);
+            Assert.True(new Nullable<double>(1).ToMaybe().IsSomething);
+
+            DateTime? nullDateTime = null;
+
+            Assert.True(nullDateTime.ToMaybe().IsNothing);
+            Assert.True(new Nullable<DateTime>(DateTime.Now).ToMaybe().IsSomething);
+
+            DateTimeOffset? nullDateTimeOffset = null;
+
+            Assert.True(nullDateTimeOffset.ToMaybe().IsNothing);
+            Assert.True(new Nullable<DateTimeOffset>(DateTime.Now).ToMaybe().IsSomething);
+
+            bool? nullBool = null;
+
+            Assert.True(nullBool.ToMaybe().IsNothing);
+            Assert.True(new Nullable<bool>(true).ToMaybe().IsSomething);
+            Assert.True(new Nullable<bool>(false).ToMaybe().IsSomething);
+
+            SomeRecord nullRecord = null;
+            SomeRecord record = new SomeRecord();
+
+            Assert.True(nullRecord.ToMaybe().IsNothing);
+            Assert.True(record.ToMaybe().IsSomething);
+        }
     }
+
+    public class SomeRecord {}
 }

@@ -21,5 +21,20 @@ namespace CSharp.Functional
                 nothing: Maybe<TResult>.Nothing(),
                 something: selector);
         }
+
+        public static Maybe<T> ToMaybe<T>(this T source)
+        {
+            return source == null ? Maybe<T>.Nothing() : Maybe<T>.Something(source);
+        }
+
+        public static Maybe<T> ToMaybe<T>(this T source, Func<T, bool> isNullFunc)
+        {
+            return isNullFunc(source) ? Maybe<T>.Nothing() : Maybe<T>.Something(source);
+        }
+
+        public static Maybe<T> ToMaybe<T>(this Nullable<T> source) where T : struct
+        {
+            return source.HasValue ? Maybe<T>.Something(source.Value) : Maybe<T>.Nothing();
+        }
     }
 }
