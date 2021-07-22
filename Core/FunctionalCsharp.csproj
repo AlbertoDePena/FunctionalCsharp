@@ -5,11 +5,12 @@
     <RepositoryUrl>https://github.com/AlbertoDePena/FunctionalCsharp.git</RepositoryUrl>
     <PackageIconUrl></PackageIconUrl>
     <PackageId>CSharp.Functional</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <OutputType>Library</OutputType>
     <RootNamespace>CSharp.Functional</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
 </Project>
