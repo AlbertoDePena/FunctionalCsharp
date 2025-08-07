@@ -15,7 +15,7 @@ namespace CSharp.Functional.Tests
         {
             var enumerable = EnumerableExtensions.Singleton(value);
 
-            Assert.True(enumerable.Count() == 1);
+            Assert.Single(enumerable);
         }
 
         [Fact]
